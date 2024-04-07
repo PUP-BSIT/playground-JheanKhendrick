@@ -11,9 +11,9 @@ jobs:
 
     steps:
       - name: Checkout to Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@master
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@master
         with:
           node-version: "20.x"
 
@@ -29,9 +29,9 @@ jobs:
     needs: [test]
     steps:
       - name: Checkout to Repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@master
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@master
         with:
           node-version: "20.x"
 
@@ -42,7 +42,7 @@ jobs:
         run: npm run build
 
       - name: Archive Production Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@master
         with:
           name: public
           path: ./public
