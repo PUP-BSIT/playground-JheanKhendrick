@@ -60,10 +60,11 @@ jobs:
           name: public
           path: ./public
 
-      # ddeploy the app artifact to firebase
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+
+      - name: Login to Firebase
+        run: firebase login:ci --no-localhost --token "${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}"
+
       - name: Deploy angular app to Firebase
-        uses: w9jds/firebase-action@master
-        with:
-          args: deploy --only hosting
-        env:
-          GCP_SA_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
+        run: firebase deploy --only hosting
