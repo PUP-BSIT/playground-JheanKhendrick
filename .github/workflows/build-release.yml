@@ -57,7 +57,7 @@ jobs:
 
       - name: Navigate to Angular App directory
         run: cd angular-app && ls
-        
+
       - name: Check for firebase.json
         run: |
           if [ ! -f "firebase.json" ]; then
