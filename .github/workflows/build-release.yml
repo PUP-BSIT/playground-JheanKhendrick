@@ -40,6 +40,9 @@ jobs:
     needs: [build]
     steps:
       # building the app before deploy
+      - name: CD to Angular App
+        run: cd angular-app
+
       - uses: actions/checkout@master
       - uses: actions/setup-node@master
         with:
