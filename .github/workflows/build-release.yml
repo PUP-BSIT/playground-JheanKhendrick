@@ -45,14 +45,15 @@ jobs:
         with:
           node-version: "20.x"
       # Install the dependencies need to build the app
-      - name: CD to Angular App
-        run: cd angular-app
-
       - name: Install Dependencies
-        run: npm install
+        run: |
+          cd angular-app
+          npm install
       # build the app
       - name: Build the app artifact for prod
-        run: npm run build --prod
+        run: |
+          cd angular-app
+          npm run build --prod
       # ddeploy the app artifact to firebase
       - name: Deploy angular app to Firebase
         uses: w9jds/firebase-action@master
