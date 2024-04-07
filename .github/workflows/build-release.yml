@@ -54,6 +54,17 @@ jobs:
         run: |
           cd angular-app
           npm run build --prod
+
+      - name: Navigate to Angular App directory
+        run: cd angular-app
+
+      - name: Check for firebase.json
+        run: |
+          if [ ! -f "firebase.json" ]; then
+            echo "firebase.json not found in the Angular App directory."
+            exit 1
+          fi
+
       # ddeploy the app artifact to firebase
       - name: Deploy angular app to Firebase
         uses: w9jds/firebase-action@master
