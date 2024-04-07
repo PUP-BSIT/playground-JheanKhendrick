@@ -11,9 +11,9 @@ jobs:
 
     steps:
       - name: Checkout to Repo
-        uses: actions/checkout@master
+        uses: actions/checkout@main
       - name: Setup Node
-        uses: actions/setup-node@master
+        uses: actions/setup-node@main
         with:
           node-version: "20.x"
 
@@ -29,9 +29,9 @@ jobs:
     needs: [test]
     steps:
       - name: Checkout to Repo
-        uses: actions/checkout@master
+        uses: actions/checkout@main
       - name: Setup Node
-        uses: actions/setup-node@master
+        uses: actions/setup-node@main
         with:
           node-version: "20.x"
 
@@ -42,7 +42,7 @@ jobs:
         run: npm run build
 
       - name: Archive Production Artifacts
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@main
         with:
           name: public
           path: ./public
@@ -55,10 +55,10 @@ jobs:
     steps:
       # building the app before deploy
       - name: Checkout to Repo
-        uses: actions/checkout@master
+        uses: actions/checkout@main
 
       - name: Setup Node
-        uses: actions/setup-node@master
+        uses: actions/setup-node@main
         with:
           node-version: "20.x"
 
@@ -71,7 +71,7 @@ jobs:
 
       # ddeploy the app artifact to firebase
       - name: Deploy angular app to Firebase
-        uses: w9jds/firebase-action@master
+        uses: w9jds/firebase-action@main
         with:
           args: deploy --only hosting
         env:
